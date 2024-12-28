@@ -85,7 +85,6 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define Button_2_Pin GPIO_PIN_4
 #define Button_2_GPIO_Port GPIOA
-#define Button_2_EXTI_IRQn EXTI4_IRQn
 #define LED_D1_Pin GPIO_PIN_5
 #define LED_D1_GPIO_Port GPIOA
 #define LED_D2_Pin GPIO_PIN_6

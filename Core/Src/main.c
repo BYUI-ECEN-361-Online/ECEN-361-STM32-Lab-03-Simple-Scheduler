@@ -84,22 +84,21 @@ void MultiFunctionShield_Clear(void);
 /* USER CODE BEGIN 0 */
 
 /******************************** STUDENT EDITABLE HERE STARTS HERE ***********************/
-  void Scheduler_Dispatch()
-      {
-      /* uWTick is updated each SysTick*/
-      uint32_t runTime = uwTick - last_runtime;     /* Save how long this slice has been going */
-      last_runtime = uwTick;
-      task_cb task = NULL;
-      /*
-       * YOUR CODE GOES HERE
-       * Note that you should also look at the 'suspended' piece of information
-       * in the task_control block to see if the scheduler needs to skip the task for now
-       */
-  /******************************** STUDENT EDITABLE ENDS HERE ***********************/
+ void Scheduler_Dispatch(){
+	/* uWTick is updated each SysTick*/
+	uint32_t runTime = uwTick - last_runtime;     /* Save how long this slice has been going */
+	last_runtime = uwTick;
+	task_cb task = NULL;
+	/*
+	* YOUR CODE GOES HERE
+	* Note that you should also look at the 'suspended' piece of information
+	* in the task_control block to see if the scheduler needs to skip the task for now
+	*/
+/******************************** STUDENT EDITABLE ENDS HERE *******************************/
 
-         task();	// The task is called!
-         return;
-         }
+	 task();	// The task is called!
+	 return;
+ }
 
 
 
@@ -112,6 +111,7 @@ void MultiFunctionShield_Clear(void);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -385,11 +385,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Button_1_Pin Button_2_Pin */
-  GPIO_InitStruct.Pin = Button_1_Pin|Button_2_Pin;
+  /*Configure GPIO pin : Button_1_Pin */
+  GPIO_InitStruct.Pin = Button_1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(Button_1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Button_2_Pin */
+  GPIO_InitStruct.Pin = Button_2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Button_2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_D1_Pin LED_D2_Pin LED_D3_Pin SevenSeg_CLK_Pin
                            SevenSeg_DATA_Pin */
@@ -419,9 +425,6 @@ static void MX_GPIO_Init(void)
 
   HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-
-  HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
