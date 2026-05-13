@@ -12,7 +12,8 @@ All of the lab will start from a pre-built STM32 'Project.'  If you're reading t
 
 Open and follow the instructions found in the Markdown (*.md) document in your cloned repo: 
 
->``./Documentation/ECEN-361-Lab-03_Write_Your_Own_Scheduler.docx)``
+>   [./Documentation/Assignment.md](./Documentation/Assignment.md)
+
 
 Modify the document with answers when finished, then commit your repository to github.   The commit will upload this word document as well and serves as the lab submission.   (Note:  MSWord is assumed to be available.  IF you don't have MSWord to edit this document, talk with the professor or T/A.)
 
